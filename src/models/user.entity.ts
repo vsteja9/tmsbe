@@ -1,6 +1,5 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Base } from './base.entity';
-import { Project } from './project.entity';
 import { Task } from './task.entity';
 
 export enum UserRoles {

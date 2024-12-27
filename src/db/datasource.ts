@@ -21,17 +21,16 @@ config();
 export const dataSourceOptions: DataSourceOptions = {
   //enable when you are debugging db..
   //logging: true,
+  url: process.env.DEPLOYEDURL,
   type: 'postgres',
-  host: process.env.POSTGRES_HOST,
-  port: parseInt(process.env.POSTGRES_PORT),
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
   entities: [Project, Task, User],
   // directly we can specify the entity names or files location..
   //entities: [Task, Project, User],
   synchronize: false,
   migrationsTableName: 'migration',
+  ssl: {
+    rejectUnauthorized: false,
+  },
 
   migrations: [join(__dirname, '../migration/*{.ts,.js}')],
   // don't use it in production, it will sync all your entities to the db.
