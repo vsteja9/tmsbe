@@ -7,7 +7,7 @@ import { configDotenv } from 'dotenv';
 import * as jwt from 'jsonwebtoken';
 configDotenv();
 //nestjs passport also we can use for authentication,mostly similar functionality
-// and we need to write the stategies class and validate in that stategies.. 
+// and we need to write the stategies class and validate in that stategies..
 // need to write the custom guards as same..
 @Injectable()
 export class AppService {
