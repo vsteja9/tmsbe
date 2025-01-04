@@ -12,7 +12,7 @@ import { Logger as nestLogger } from '@nestjs/common';
 // logging tutorial that I followed..  https://riochndr.com/posts/effective-and-simple-logging-in-nestjs-using-pino-logger/
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useLogger(app.get(Logger));
   const options = new DocumentBuilder()
     .addBearerAuth()
