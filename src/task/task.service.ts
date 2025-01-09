@@ -110,4 +110,12 @@ export class TaskService {
       throw err;
     }
   }
+  async deleteTask(id: string) {
+    try {
+      const response = await this.taskRepository.delete({ id });
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  }
 }
