@@ -43,7 +43,7 @@ export class TaskController {
   updateTask(@Body() updatetask: UpdateTaskDTO, @Param('id') id: string) {
     return this.taskService.updateTask(id, updatetask);
   }
-  @Delete(':id')
+  @Delete('delete/:id')
   deleteTask(@Param('id') id: string) {
     return this.taskService.deleteTask(id);
   }
