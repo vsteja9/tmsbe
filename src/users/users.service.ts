@@ -47,7 +47,9 @@ export class UsersService {
   }
   async getAllUsers() {
     try {
-      const users = await this.userRepository.find();
+      const users = await this.userRepository.find({
+        relations: { tasks: true },
+      });
       if (users) {
         const filteredUsers = users.map((obj) => {
           const { password, ...remaining } = obj;
