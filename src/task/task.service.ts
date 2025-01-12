@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { TaskDTO } from 'src/DTOs/task.dto';
 import { UpdateTaskDTO } from 'src/DTOs/update-task.dto';
 import { Project } from 'src/models/project.entity';
-import { Task } from 'src/models/task.entity';
+import { Task, TaskStatus } from 'src/models/task.entity';
 import { User } from 'src/models/user.entity';
 import { ProjectService } from 'src/project/project.service';
 import { UsersService } from 'src/users/users.service';
@@ -36,7 +36,7 @@ export class TaskService {
       createdTask.name = createTask.taskName;
       createdTask.description = createTask.taskDescription;
       // task status by default it is not started..
-      //createdTask.status = createTask.status;
+      createdTask.status = TaskStatus.ANALYSIS;
       //save the task obj
       return await this.taskRepository.save(createdTask);
     } catch (err) {
