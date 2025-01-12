@@ -86,7 +86,7 @@ export class TaskService {
       const projectLinkedTasks = await this.taskRepository.find({
         where: { project: { id: projectId } },
       });
-      if (projectLinkedTasks.length === 0 || !projectLinkedTasks)
+      if (!projectLinkedTasks)
         throw new HttpException(
           `Tasks are not found for projectId:${projectId}`,
           404,
@@ -102,7 +102,7 @@ export class TaskService {
       const userLinkedTasks = await this.taskRepository.find({
         where: { user: { id: userId } },
       });
-      if (userLinkedTasks.length === 0 || !userLinkedTasks)
+      if (!userLinkedTasks)
         throw new HttpException(`Tasks not found for UserId:${userId}`, 404);
       return userLinkedTasks;
     } catch (err) {
