@@ -85,7 +85,9 @@ export class TaskService {
     try {
       const projectLinkedTasks = await this.taskRepository.find({
         where: { project: { id: projectId } },
+        relations: { project: true, user: true },
       });
+
       if (!projectLinkedTasks)
         throw new HttpException(
           `Tasks are not found for projectId:${projectId}`,
